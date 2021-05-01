@@ -115,8 +115,8 @@ class LinePainter extends CustomPainter {
       canvas.drawLine(
         Offset(size.width, 0.0),
         Offset(
-          size.height * (1 - _progress),
-          size.width * (_progress),
+          size.width * (1 - _progress),
+          size.height * (_progress),
         ),
         _paint,
       );
