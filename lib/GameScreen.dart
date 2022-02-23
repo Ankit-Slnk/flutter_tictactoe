@@ -6,6 +6,7 @@ import 'package:tictactoe/Circle.dart';
 import 'package:tictactoe/Cross.dart';
 import 'package:tictactoe/Line.dart';
 import 'package:tictactoe/Utility.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class GameScreen extends StatefulWidget {
@@ -199,6 +200,102 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
       child: Stack(
         alignment: Alignment.center,
         children: [
+          Container(
+            alignment: Alignment.centerLeft,
+            child: IconButton(
+              icon: Icon(
+                Icons.info_outline_rounded,
+              ),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("Flutter Tic Tac Toe"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text("This game is developed by:"),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text(
+                            "Ankit Solanki",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 23,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "Mobile Application Developer",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            "Flutter • Android • iOS",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Github - "),
+                              InkWell(
+                                child: Text(
+                                  "Ankit-Slnk",
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onTap: () async {
+                                  String url = "https://github.com/Ankit-Slnk";
+                                  if (await canLaunch(url)) {
+                                    launch(url);
+                                  }
+                                },
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          InkWell(
+                            child: Text(
+                              "Portfolio Website",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            onTap: () async {
+                              String url =
+                                  "https://ankitsolanki.netlify.app/#/";
+                              if (await canLaunch(url)) {
+                                launch(url);
+                              }
+                            },
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
           Utility.getTextView("Tic Tac Toe", 30),
           Container(
             alignment: Alignment.centerRight,
