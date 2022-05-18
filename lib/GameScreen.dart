@@ -281,8 +281,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                               ),
                             ),
                             onTap: () async {
-                              String url =
-                                  "https://ankitsolanki.netlify.app/#/";
+                              String url = "http://ankitsolanki.dev";
                               if (await canLaunch(url)) {
                                 launch(url);
                               }
